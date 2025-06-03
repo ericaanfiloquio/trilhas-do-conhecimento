@@ -20,5 +20,6 @@ Objetivo do projeto: proporcionar aos usuários cursos online gratuitos e/ou de 
 Após diversas modificações na aplicação, esse projeto reflete a nova estrutura criada (tanto back como front refeitos). 
 Objetivo: focar em boas práticas de QA.
 
-## Descrição de cenários:
-1. Cadastro de usuário
+## Cenários de teste:
+`cypress/README.md`
+
