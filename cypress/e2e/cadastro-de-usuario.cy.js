@@ -1,5 +1,5 @@
 describe('Testes Trilha do Conhecimento', () => {
-  it('Cadastro de usuário', () => {
+  it('Cadastro de usuário corretamente', () => {
     cy.visit('/')
     cy.get("[href='/login']").click()
     cy.get(".text-link span").click()
@@ -11,6 +11,6 @@ describe('Testes Trilha do Conhecimento', () => {
     cy.get("[formcontrolname='keyWord']").type('qualidade')
     cy.get("[type='submit']").click()
     // Acessar a trilha
-    
+
   })
 })
