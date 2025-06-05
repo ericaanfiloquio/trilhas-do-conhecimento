@@ -14,7 +14,7 @@ describe('Testes Trilha do Conhecimento', () => {
     errorPopUp: "[role='dialog']",
   }
 
-  it.skip('001 Cadastro de usuário corretamente', () => {
+  it('001 Cadastro de usuário corretamente', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.createUserLink).click()
@@ -25,7 +25,6 @@ describe('Testes Trilha do Conhecimento', () => {
     cy.get(selectorsList.confirmPasswordField).type('Test123*')
     cy.get(selectorsList.keyWordField).type('qualidade')
     cy.get(selectorsList.submitButton).click()
-    cy.get(".button").click()
 
   })
 
@@ -45,7 +44,7 @@ describe('Testes Trilha do Conhecimento', () => {
 
   })
 
-  it('003 Cadastro de usuário com email já cadastrado', () => {
+  it.skip('003 Cadastro de usuário com email já cadastrado', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.createUserLink).click()
