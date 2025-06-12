@@ -1,7 +1,10 @@
-describe('Testes Trilha do Conhecimento', () => {
+describe('Cadastro Trilha do Conhecimento', () => {
 
+  const Chance = require('chance');
+
+  const chance = new Chance();
   const selectorsList = {
-    loginButton: "[href='/login']",
+    loginButton: "[routerlink='/login']",
     createUserLink: ".text-link span",
     nameField: "[formcontrolname='name']",
     emailField: "[formcontrolname='email']",
@@ -11,29 +14,33 @@ describe('Testes Trilha do Conhecimento', () => {
     keyWordField: "[formcontrolname='keyWord']",
     submitButton: "[type='submit']",
     errorMessage: ".error-message",
-    errorPopUp: "[role='dialog']",
+    popUp: "[role='dialog']",
+    acessarTrilha: ".cancel",
+    telaMinhasTrilhas: ".first_div",
   }
 
   it('001 Cadastro de usuário corretamente', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.createUserLink).click()
-    cy.get(selectorsList.nameField).type('Maria Test')
-    cy.get(selectorsList.emailField).type('maria8@test.com')
+    cy.get(selectorsList.nameField).type('Maria Joy')
+    cy.get(selectorsList.emailField).type(chance.email())
     cy.get(selectorsList.birthDateField).type('08/08/2000')
     cy.get(selectorsList.passwordField).type('Test123*')
     cy.get(selectorsList.confirmPasswordField).type('Test123*')
     cy.get(selectorsList.keyWordField).type('qualidade')
     cy.get(selectorsList.submitButton).click()
-
+    cy.get(selectorsList.popUp).contains('sucesso')
+    cy.get(selectorsList.acessarTrilha).click()
+    // cy.get(selectorsList.telaMinhasTrilhas)
   })
 
   it.skip('002 Cadastro de usuário menor de idade', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.createUserLink).click()
-    cy.get(selectorsList.nameField).type('Maria Test')
-    cy.get(selectorsList.emailField).type('maria4@test.com')
+    cy.get(selectorsList.nameField).type(chance.name({ middle: true }))
+    cy.get(selectorsList.emailField).type(chance.email())
     cy.get(selectorsList.birthDateField).type('08/08/2015')
     cy.get(selectorsList.passwordField).type('Test123*')
     cy.get(selectorsList.confirmPasswordField).type('Test123*')
@@ -55,7 +62,7 @@ describe('Testes Trilha do Conhecimento', () => {
     cy.get(selectorsList.confirmPasswordField).type('Test123*')
     cy.get(selectorsList.keyWordField).type('qualidade')
     cy.get(selectorsList.submitButton).click()
-    cy.get(selectorsList.errorPopUp)
+    cy.get(selectorsList.popUp)
     // Alerta de erro deve aparecer informando que o e-mail informado já foi cadastrado
 
   })
