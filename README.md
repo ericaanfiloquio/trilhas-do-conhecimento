@@ -5,10 +5,10 @@ Essas áreas são: Quality Assurance, Product Owner, Scrum Master, UX//UI, Devel
 
 Objetivo do projeto: proporcionar aos usuários cursos online gratuitos e/ou de baixo custo para as áreas de Desenvolvimento de Software acima mencionadas.
 
-## Tecnologias usadas
+## Tecnologias e ferramentas usadas
 - Cypress
 - JavaScript
-- 
+- Jira
 
 ## Como rodar
 1. Clone o repositório
