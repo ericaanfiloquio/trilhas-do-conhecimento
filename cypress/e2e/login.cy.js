@@ -15,15 +15,24 @@ describe('Login Trilha do Conhecimento', () => {
     submitButton: "[type='submit']",
     errorMessage: ".error-message",
     errorPopUp: "[role='dialog']",
+    acessarTrilha: ".cancel",
   }
 
-  it('001 Login com dados cadastrados', () => {
+  it('001 Cadastro + Login com dados cadastrados', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
-    cy.get("[name='email']").type('maria3@test.com')
-    cy.get("[name='password']").type('Test123*')
+    cy.get(selectorsList.createUserLink).click()
+    cy.get(selectorsList.nameField).type('Oli Test')
+    cy.get(selectorsList.emailField).type(chance.email())
+    cy.get(selectorsList.birthDateField).type('08/08/2001')
+    cy.get(selectorsList.passwordField).type('test123')
+    cy.get(selectorsList.confirmPasswordField).type('test123')
+    cy.get(selectorsList.keyWordField).type('qualidade')
     cy.get(selectorsList.submitButton).click()
-    cy.get("app-career-overview") // confirmar que usuário foi direcionado para a tela inicial de Trilhas de conhecimentos
+    cy.get(selectorsList.acessarTrilha, { timeout: 10000 }) // espera até 10s se precisar
+      .should('be.visible')
+      .click()
+    
     
   })
 })

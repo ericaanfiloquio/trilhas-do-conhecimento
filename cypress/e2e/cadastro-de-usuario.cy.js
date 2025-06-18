@@ -4,7 +4,7 @@ describe('Cadastro Trilha do Conhecimento', () => {
 
   const chance = new Chance();
   const selectorsList = {
-    loginButton: "[routerlink='/login']",
+    loginButton: "[href='/login']",
     createUserLink: ".text-link span",
     nameField: "[formcontrolname='name']",
     emailField: "[formcontrolname='email']",
@@ -19,7 +19,7 @@ describe('Cadastro Trilha do Conhecimento', () => {
     telaMinhasTrilhas: ".first_div",
   }
 
-  it('001 Cadastro de usuário corretamente', () => {
+  it.skip('001 Cadastro de usuário corretamente', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.createUserLink).click()
@@ -35,7 +35,7 @@ describe('Cadastro Trilha do Conhecimento', () => {
     // cy.get(selectorsList.telaMinhasTrilhas)
   })
 
-  it.skip('002 Cadastro de usuário menor de idade', () => {
+  it('002 Cadastro de usuário menor de idade', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.createUserLink).click()
@@ -47,6 +47,7 @@ describe('Cadastro Trilha do Conhecimento', () => {
     cy.get(selectorsList.keyWordField).type('qualidade')
     cy.get(selectorsList.submitButton).click()
     cy.get(selectorsList.errorMessage)
+    cy.get(selectorsList.popUp)
     // Alerta de erro deve aparecer pois usuário é menor de idade (18 anos)
 
   })
