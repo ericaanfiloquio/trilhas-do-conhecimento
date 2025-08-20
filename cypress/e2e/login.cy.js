@@ -1,38 +1,24 @@
 describe('Login Trilha do Conhecimento', () => {
 
-  const Chance = require('chance');
-
-  const chance = new Chance();
   const selectorsList = {
     loginButton: "[routerlink='/login']",
-    createUserLink: ".text-link span",
-    nameField: "[formcontrolname='name']",
-    emailField: "[formcontrolname='email']",
-    birthDateField: "[formcontrolname='birthDate']",
-    passwordField: "[formcontrolname='password']",
-    confirmPasswordField: "[formcontrolname='confirmPassword']",
-    keyWordField: "[formcontrolname='keyWord']",
+    emailField: "[name='email']",
+    passwordField: "[type='password']",
     submitButton: "[type='submit']",
-    errorMessage: ".error-message",
-    errorPopUp: "[role='dialog']",
-    acessarTrilha: ".cancel",
+
   }
 
-  it('001 Cadastro + Login com dados cadastrados', () => {
+  it('Login', () => {
     cy.visit('/')
     cy.get(selectorsList.loginButton).click()
-    cy.get(selectorsList.createUserLink).click()
-    cy.get(selectorsList.nameField).type('Oli Test')
-    cy.get(selectorsList.emailField).type(chance.email())
-    cy.get(selectorsList.birthDateField).type('08/08/2001')
-    cy.get(selectorsList.passwordField).type('test123')
-    cy.get(selectorsList.confirmPasswordField).type('test123')
-    cy.get(selectorsList.keyWordField).type('qualidade')
+    cy.get(selectorsList.emailField).type('test8@mail.com')
+    cy.get(selectorsList.passwordField).type('123456')
     cy.get(selectorsList.submitButton).click()
-    cy.get(selectorsList.acessarTrilha, { timeout: 10000 }) // espera até 10s se precisar
+    cy.get(".second-div__flexbox").eq(0).click()
+    cy.get("button").click()
+    cy.get(".text_main_menu").eq(0).click()
+    cy.get("[target='_blank']").eq(0).click()
       .should('be.visible')
-      .click()
-    
     
   })
 })
